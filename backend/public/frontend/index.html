@@ -1,0 +1,31 @@
+<!-- frontend/index.html -->
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ArtFitness Catalogo</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Catálogo ArtFitness</h1>
+    <section id="list">
+      <h2>Produtos</h2>
+      <ul id="products"></ul>
+    </section>
+
+    <section id="add">
+      <h2>Adicionar Produto</h2>
+      <form id="productForm">
+        <input type="text" id="name" placeholder="Nome" required />
+        <input type="text" id="description" placeholder="Descrição" />
+        <input type="number" id="price" placeholder="Preço" step="0.01" required />
+        <button type="submit">Adicionar</button>
+      </form>
+    </section>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
