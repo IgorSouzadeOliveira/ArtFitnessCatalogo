@@ -1,0 +1,111 @@
+/*
+    ======================================
+    ESTILOS ESPECÍFICOS DO CATÁLOGO DE PRODUTOS
+    ======================================
+*/
+
+#catalogo-produtos {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* Título principal da seção de catálogo */
+#catalogo-produtos h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    /* Usa a cor padrão do body (Preto/Cinza Escuro) */
+}
+
+/* Estilizando cada card de produto */
+.produto {
+    /* Layout Flexbox para Imagem e Descrição lado a lado */
+    display: flex;
+    flex-wrap: wrap; 
+    align-items: flex-start; 
+    margin-bottom: 40px;
+    padding: 20px;
+    border: 1px solid #eee; 
+    border-radius: 8px; 
+    background-color: #FFFFFF; /* Fundo branco do card */
+}
+
+.produto:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.produto h3 {
+    width: 100%; 
+    margin-bottom: 15px;
+    color: #ff8c00; /* Laranja no título do produto */
+    border-bottom: 2px solid #ff8c00;
+    padding-bottom: 5px;
+}
+
+.produto-imagem-container {
+    flex: 0 0 30%; 
+    max-width: 30%;
+    padding-right: 20px;
+}
+
+.produto-imagem {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    display: block; 
+    object-fit: cover;
+}
+
+.produto-descricao {
+    flex: 0 0 70%;
+    max-width: 70%;
+    display: flex;
+    flex-direction: column; 
+}
+
+.produto-descricao p {
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+/* Botão de Detalhes */
+.detalhes-btn {
+    background-color: #ff8c00;
+    color: #FFFFFF; /* Texto branco no botão laranja */
+    border: none;
+    padding: 12px 25px;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.1s;
+    align-self: flex-start; 
+    text-transform: uppercase;
+}
+
+.detalhes-btn:hover {
+    background-color: #cc7000;
+    transform: translateY(-1px);
+}
+
+hr {
+    border-top: 1px solid #ccc;
+    margin: 40px auto;
+}
+
+
+/*
+    ======================================
+    RESPONSIVIDADE (CATÁLOGO)
+    ======================================
+*/
+@media (max-width: 768px) {
+    .produto-imagem-container,
+    .produto-descricao {
+        flex: 0 0 100%;
+        max-width: 100%;
+        padding-right: 0;
+    }
+    .produto-imagem-container {
+        margin-bottom: 20px;
+    }
+}

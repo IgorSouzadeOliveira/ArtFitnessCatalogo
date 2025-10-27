@@ -1,0 +1,157 @@
+/*
+    ======================================
+    DEFINIÇÃO DAS VARIÁVEIS DE CORES E FONTE
+    ======================================
+*/
+:root {
+    --cor-principal: #FFFFFF;     /* Branco */
+    --cor-secundaria: #212529;    /* Preto/Cinza Escuro (primary-dark) */
+    --cor-terciaria: #ff8c00;     /* Laranja Escuro (orange-highlight) */
+    --fonte-principal: 'Inter', sans-serif; 
+}
+
+/*
+    ======================================
+    ESTILOS GLOBAIS E BODY
+    ======================================
+*/
+body {
+    font-family: var(--fonte-principal);
+    padding-top: 70px; /* Espaço para a navbar fixa */
+    background-color: #f7f7f7; /* Fundo cinza claro */
+    color: var(--cor-secundaria); /* Texto Preto/Cinza Escuro */
+}
+
+h1, h2, h3 {
+    font-weight: 700; 
+}
+
+/* Utilitário de Destaque */
+.text-orange-highlight {
+    color: var(--cor-terciaria); 
+}
+
+/*
+    ======================================
+    NAVBAR
+    ======================================
+*/
+.navbar {
+    background-color: var(--cor-principal); /* Fundo Branco */
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.1); 
+    padding: 8px 0;
+}
+
+/* Removidas as regras que anulavam o padding do Bootstrap (.navbar .container-fluid, etc.) */
+
+/* Opcional: Removida a regra customizada .logo-artfitness { padding-left: 15px; } */
+
+.logo-artfitness img {
+    height: 80px; /* Mantida a altura da imagem */
+    width: auto;
+}
+
+/*
+    ======================================
+    TÍTULO INTERMEDIÁRIO (DESTAQUE)
+    ======================================
+*/
+.div-mid-title {
+    background-color: var(--cor-principal); /* Fundo branco */
+    width: 100%;
+    text-align: center;
+}
+
+/*
+    ======================================
+    CATÁLOGO: TÍTULO E FILTROS (Estilos Gerais do Catálogo)
+    ======================================
+*/
+.section-title {
+    color: var(--cor-terciaria);
+    font-size: 2.2rem;
+    padding-bottom: 10px;
+    border-bottom: 3px solid var(--cor-terciaria); 
+    display: inline-block;
+}
+
+/* Estilo dos Botões de Filtro */
+.btn-primary-custom-filter {
+    background-color: var(--cor-secundaria); 
+    color: var(--cor-principal); 
+    border: 1px solid var(--cor-secundaria);
+    font-weight: 500;
+    padding: 8px 20px;
+    transition: all 0.2s;
+}
+
+.btn-primary-custom-filter:hover {
+    background-color: var(--cor-terciaria); 
+    color: var(--cor-secundaria); 
+    border-color: var(--cor-terciaria);
+}
+
+/* Estilo para o botão de filtro ATIVO/SELECIONADO */
+.btn-primary-custom-filter.active,
+.btn-primary-custom-filter:focus {
+    background-color: var(--cor-terciaria);
+    color: var(--cor-secundaria);
+    border-color: var(--cor-terciaria);
+    box-shadow: 0 0 0 0.25rem rgba(255, 140, 0, 0.5); 
+}
+
+/*
+    ======================================
+    FORMULÁRIO DE CONTATO (ESTILOS REUSÁVEIS)
+    ======================================
+*/
+.formulario-secao {
+    padding: 60px 0;
+    background-color: var(--cor-secundaria); 
+    color: var(--cor-principal); 
+}
+
+.formulario-titulo {
+    color: var(--cor-terciaria); 
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.formulario-subtitulo {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 1.1rem;
+}
+
+.form-label {
+    font-weight: 600;
+    color: var(--cor-principal); 
+}
+
+/* Estilo do botão de envio do formulário */
+.btn-enviar {
+    background-color: var(--cor-terciaria); 
+    color: var(--cor-secundaria); 
+    border: none;
+    padding: 12px 30px;
+    font-weight: 700;
+    transition: background-color 0.3s;
+}
+
+.btn-enviar:hover {
+    background-color: #e67d00;
+    color: var(--cor-secundaria);
+}
+
+/*
+    ======================================
+    FOOTER
+    ======================================
+*/
+footer {
+    background-color: #1a1d20; 
+    color: var(--cor-principal);
+    text-align: center;
+    padding: 15px 0;
+    font-size: 0.9rem;
+}
