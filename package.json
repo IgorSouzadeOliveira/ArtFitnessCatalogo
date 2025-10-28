@@ -4,8 +4,10 @@
   "description": "Este repositório contém o código-fonte para a **página de Catálogo de Produtos** do website oficial da ArtFitness. Diferente da *Home Page* principal (focada em geração de leads e contato inicial), esta seção tem o objetivo de ser uma **vitrine digital detalhada** e funcional para nossos clientes corporativos.",
   "main": "index.js",
   "scripts": {
-    "start": "node backend/server.js",
-    "dev": "nodemon backend/server.js"
+    "start": "node backend/src/server.js",
+    "dev": "nodemon backend/src/server.js",
+    "lint": "eslint .",
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
