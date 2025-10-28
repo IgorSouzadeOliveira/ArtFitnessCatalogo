@@ -73,5 +73,39 @@ if (filterContainer && productCards.length > 0) {
         }
     });
 }
-// OBS: Utilizamos d-none (display: none) e d-flex (display: flex) do Bootstrap 
+// OBS: Utilizamos d-none (display: none) e d-flex (display: flex) do Bootstrap
 // para esconder e mostrar os cards, respeitando o layout flexbox existente.
+// --- Envio de formulário de orçamento ---
+document.addEventListener('DOMContentLoaded', () => {
+  const formOrcamento = document.getElementById('formOrcamento');
+  if (!formOrcamento) return; // evita erro se o form não existir
+
+  formOrcamento.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const dados = {
+      nome: document.getElementById('nome').value,
+      email: document.getElementById('email').value,
+      telefone: document.getElementById('telefone').value,
+      mensagem: document.getElementById('mensagem').value,
+    };
+
+    try {
+      const resposta = await fetch('/api/orcamentos', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(dados),
+      });
+
+      if (resposta.ok) {
+        alert('Orçamento enviado com sucesso!');
+        formOrcamento.reset();
+      } else {
+        alert('Erro ao enviar orçamento.');
+      }
+    } catch (erro) {
+      console.error('Erro ao enviar orçamento:', erro);
+      alert('Erro de conexão com o servidor.');
+    }
+  });
+});

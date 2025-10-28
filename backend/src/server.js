@@ -5,6 +5,9 @@ const path = require('path');
 
 const PORT = process.env.PORT || 3000;
 
+const orcamentoRoutes = require('./routes/orcamentoRoutes');
+app.use('/api/orcamento', orcamentoRoutes);
+
 (async () => {
   try {
     await connectDB();
