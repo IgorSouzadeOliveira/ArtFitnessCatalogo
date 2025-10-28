@@ -3,7 +3,6 @@ const express = require('express');
 const router = express.Router();
 const { sql } = require('../db');
 
-// GET /api/products
 router.get('/', async (req, res) => {
   try {
     const result = await sql.query`SELECT Id, Name, Description, Price FROM Products`;
@@ -14,7 +13,6 @@ router.get('/', async (req, res) => {
   }
 });
 
-// POST /api/products
 router.post('/', async (req, res) => {
   try {
     const { name, description, price } = req.body;

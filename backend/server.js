@@ -1,4 +1,3 @@
-// backend/server.js
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
@@ -11,31 +10,17 @@ const productsRouter = require('./routes/products');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Middlewares
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Rotas da API
-app.use('/api/products', productsRouter);
+app.use('/api/products', require('./routes/products'));
 
-/* =====================================================
-   🔧 ALTERAÇÃO IMPORTANTE AQUI:
-   Servir a pasta correta onde está o frontend real:
-   backend/public/frontend/
-   ===================================================== */
 app.use(express.static(path.join(__dirname, 'public', 'frontend')));
 
-/* =====================================================
-   🔁 Fallback para Single Page Application (SPA)
-   ou rotas desconhecidas → retorna index.html
-   ===================================================== */
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'frontend', 'index.html'));
+  res.status(404).send('Página não encontrada');
 });
-
-// (opcional) se tiver outros arquivos públicos, ex: imagens, uploads
-// app.use('/static', express.static(path.join(__dirname, 'public')));
 
 async function start() {
   try {
