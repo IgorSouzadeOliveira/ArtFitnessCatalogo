@@ -1,19 +1,14 @@
-// frontend/js/main.js
-
 const productsList = document.getElementById("products");
 const form = document.getElementById("productForm");
 
-// 🔗 URL correta do backend Node.js
 const API_URL = "http://localhost:3000/api/products";
 
-// 🧠 Buscar produtos do banco
 async function fetchProducts() {
   try {
     const response = await fetch(API_URL);
     if (!response.ok) throw new Error("Falha ao buscar produtos");
     const products = await response.json();
 
-    // Exibir produtos na tela
     productsList.innerHTML = products
       .map(
         (p) => `
@@ -29,7 +24,6 @@ async function fetchProducts() {
   }
 }
 
-// 💾 Adicionar produto novo
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
@@ -47,11 +41,10 @@ form.addEventListener("submit", async (e) => {
     if (!response.ok) throw new Error("Falha ao adicionar produto");
 
     form.reset();
-    await fetchProducts(); // Recarrega lista
+    await fetchProducts();
   } catch (error) {
     console.error("Erro ao adicionar produto", error);
   }
 });
 
-// 🚀 Carregar produtos ao abrir a página
 fetchProducts();
