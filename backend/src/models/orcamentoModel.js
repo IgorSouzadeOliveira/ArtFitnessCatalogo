@@ -1,5 +1,5 @@
 const sql = require('mssql');
-const dbConfig = require('../config/dbConfig');
+const dbConfig = require('../config/db');
 
 exports.create = async (orcamentoData) => {
   try {

@@ -15,21 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// Racional por trás do código:
-// Bom, para a primeira linha estamos esperando a pág carregar totalmente.
-// Dpois selecionamos tadas as classes(HMTL) 'needs-validation' do form.
-// Faz a trasnfeencia de 'NodeList' pra um array que faz loop por cada form.
-// Faz o evento de clickar e enviar.
-//faz a verificação se o form é válido ou não.
-// Se não for válido, fiz de uma forma para que não envie e não propague o form
-// Adicionando a classe do boostrap que é usada para mostrar as mensagens de erro ou de sucesso.
-// Esse false no final é mais para se referir a fase de captura do evento (padrãozão).
-
-// ===============================================
-// LÓGICA DE FILTRAGEM DO CATÁLOGO
-// ===============================================
-
-// Seleciona o container dos botões de filtro e todos os botões
 const filterContainer = document.querySelector('.filter-buttons-container');
 const filterButtons = document.querySelectorAll('.btn-primary-custom-filter');
 const productCards = document.querySelectorAll('.produto'); // Seleciona todos os produtos
@@ -73,39 +58,54 @@ if (filterContainer && productCards.length > 0) {
         }
     });
 }
-// OBS: Utilizamos d-none (display: none) e d-flex (display: flex) do Bootstrap
-// para esconder e mostrar os cards, respeitando o layout flexbox existente.
-// --- Envio de formulário de orçamento ---
 document.addEventListener('DOMContentLoaded', () => {
-  const formOrcamento = document.getElementById('formOrcamento');
-  if (!formOrcamento) return; // evita erro se o form não existir
+  const form = document.getElementById('formOrcamento');
+  if (!form) {
+    console.warn('Formulário de orçamento não encontrado — abortando listener.');
+    return;
+  }
 
-  formOrcamento.addEventListener('submit', async (e) => {
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    const dados = {
-      nome: document.getElementById('nome').value,
-      email: document.getElementById('email').value,
-      telefone: document.getElementById('telefone').value,
-      mensagem: document.getElementById('mensagem').value,
-    };
+    const nomeEl = form.querySelector('#nome');
+    const emailEl = form.querySelector('#email');
+    const mensagemEl = form.querySelector('#mensagem');
+
+    if (!nomeEl || !emailEl || !mensagemEl) {
+      console.error('Campos do formulário não encontrados:', { nomeEl, emailEl, mensagemEl });
+      alert('Erro: campos do formulário ausentes. Recarregue a página e tente novamente.');
+      return;
+    }
+
+    const nome = nomeEl.value.trim();
+    const email = emailEl.value.trim();
+    const mensagem = mensagemEl.value.trim();
+
+    if (!nome || !email || !mensagem) {
+      alert('Por favor preencha todos os campos obrigatórios.');
+      return;
+    }
 
     try {
-      const resposta = await fetch('/api/orcamentos', {
+      const resp = await fetch('/api/orcamento', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(dados),
+        body: JSON.stringify({ nome, email, mensagem })
       });
 
-      if (resposta.ok) {
-        alert('Orçamento enviado com sucesso!');
-        formOrcamento.reset();
-      } else {
-        alert('Erro ao enviar orçamento.');
+      if (!resp.ok) {
+        const txt = await resp.text().catch(() => null);
+        console.error('Erro do servidor:', resp.status, txt);
+        alert('Falha ao enviar orçamento. Tente novamente mais tarde.');
+        return;
       }
-    } catch (erro) {
-      console.error('Erro ao enviar orçamento:', erro);
-      alert('Erro de conexão com o servidor.');
+
+      alert('Orçamento enviado com sucesso!');
+      form.reset();
+    } catch (err) {
+      console.error('Erro de rede ao enviar orçamento:', err);
+      alert('Erro de conexão. Verifique sua rede.');
     }
   });
 });
