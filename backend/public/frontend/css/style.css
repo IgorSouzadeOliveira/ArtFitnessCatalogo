@@ -148,10 +148,54 @@ h1, h2, h3 {
     FOOTER
     ======================================
 */
-footer {
-    background-color: #1a1d20; 
-    color: var(--cor-principal);
-    text-align: center;
-    padding: 15px 0;
-    font-size: 0.9rem;
+/*
+    ======================================
+    FOOTER
+    ======================================
+*/
+.footer-custom {
+    background-color: var(--cor-secundaria); /* Fundo Preto/Cinza Escuro */
+    color: var(--cor-principal); /* Texto Branco */
+    padding: 30px 0; /* Mais padding para maior destaque */
+    margin-top: 60px; /* Espaço entre o formulário e o footer */
+}
+
+.footer-logo {
+    height: 70px; /* Altura da logo no footer */
+    width: auto;
+    margin-bottom: 10px; /* Pequena margem abaixo da logo, se necessário */
+}
+
+.footer-text {
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.social-icons {
+    font-size: 1.8rem; /* Tamanho dos ícones */
+}
+
+.social-icon-link {
+    color: var(--cor-principal); /* Cor branca para os ícones */
+    transition: color 0.3s ease;
+    text-decoration: none; /* Remove sublinhado padrão */
+    margin: 0 8px; /* Espaçamento entre os ícones */
+}
+
+.social-icon-link:hover {
+    color: var(--cor-terciaria); /* Muda para Laranja no hover */
+}
+
+/* Responsividade para o footer */
+@media (max-width: 768px) {
+    .footer-custom .row > div {
+        text-align: center;
+        margin-bottom: 20px; /* Espaço entre os blocos em telas pequenas */
+    }
+    .footer-custom .row > div:last-child {
+        margin-bottom: 0; /* Remove margem do último item */
+    }
+    .footer-logo {
+        height: 60px; /* Ajusta a altura da logo para telas menores */
+    }
 }
